@@ -1,10 +1,11 @@
 const getHomepage = (req, res) => {
-    res.render('home.ejs');
+    res.render('index.ejs');
 }
-const getQrCode = (req, res) => {
-    res.render('sample.ejs');
+const getContact = (req, res) => {
+    res.render('contact.ejs');
+}
+const getAbout = (req, res) => {
+    res.send('trunghieutran');
 }
 
-module.exports = {
-    getHomepage, getQrCode
-}
+module.exports = {getHomepage,getContact,getAbout};
