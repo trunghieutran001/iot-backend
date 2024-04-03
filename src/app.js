@@ -5,8 +5,7 @@ const indexRouter = require('./routes/index') // Import den file web routes
 const settingRouter = require('./routes/setting')
 const app = express(); // Tạo một ứng dụng Express
 const path = require('path');
-const port = process.env.PORT || 3000; // Port
-const hostname = 'localhost';
+const port = 3000; // Port
 
 // config template engine
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +21,6 @@ app.use(morgan('combined'));
 app.use('/', indexRouter);
 app.use('/setting', settingRouter);
 
-app.listen(port, process.env.HOST_NAME, () => {
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })

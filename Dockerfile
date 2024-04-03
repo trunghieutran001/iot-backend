@@ -1,10 +1,10 @@
 FROM node:14-alpine
-RUN mkdir /test
+RUN mkdir /webapp
 
-WORKDIR /test
+WORKDIR /webapp
 
 COPY . .
 
 RUN npm install
 EXPOSE 3000
-CMD node src/server.js
+CMD ["node", "src/app.js"]
