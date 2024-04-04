@@ -24,29 +24,6 @@ app.use(morgan('combined'));
 app.use('/', indexRouter);
 app.use('/setting', settingRouter);
 
-// test connection
-// create the connection to database
-
-
-// Testing connection and performing a simple query
-connection.connect(function(err) {
-    if (err) {
-        console.error('Error connecting to database:', err);
-        return;
-    }
-
-    console.log('Connected to database');
-
-    connection.query('SELECT * FROM employees', function(err, results, fields) {
-        if (err) {
-            console.error('Error executing query:', err);
-            return;
-        }
-        console.log(">>> results=", results);
-    });
-});
-
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
