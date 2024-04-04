@@ -3,7 +3,7 @@ const express = require('express'); // Import thư viện Express
 const morgan = require('morgan')
 const indexRouter = require('./routes/index') // Import den file web routes
 const settingRouter = require('./routes/setting')
-const mysql = require('mysql2');
+const connection = require('./config/database');
 
 const app = express(); // Tạo một ứng dụng Express
 const path = require('path');
@@ -26,14 +26,7 @@ app.use('/setting', settingRouter);
 
 // test connection
 // create the connection to database
-// Creating database connection
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: '123456',
-    database: 'appdb'
-});
+
 
 // Testing connection and performing a simple query
 connection.connect(function(err) {
@@ -50,7 +43,6 @@ connection.connect(function(err) {
             return;
         }
         console.log(">>> results=", results);
-        console.log(">>> fields=", fields);
     });
 });
 
