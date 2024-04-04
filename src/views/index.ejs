@@ -15,23 +15,26 @@
         <a href="/setting">Setting</a>
     </div>
     <div>
-        <h1>Form</h1>
+        <h1></h1>
     </div>
     <div class="form-add-new">
-    <fieldset>
-        <legend>Add New Employees</legend>
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id"><br><br>
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
-      </fieldset>
-    </div>
-    <div>
-        <button>save</button>
+    <form action="/create-user" method="post">
+        <fieldset>
+            <legend>Add New Employees</legend>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id"><br><br>
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+          </fieldset>
+          <div>
+            <button>save</button>
+        </div>
+    </form>
+
     </div>
 </body>
 

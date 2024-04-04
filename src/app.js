@@ -10,6 +10,10 @@ const path = require('path');
 const { table } = require('console');
 const port = 3000; // Port
 
+//config req.body
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
+
 // config template engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -18,7 +22,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 //config morgan
-app.use(morgan('combined'));
+//app.use(morgan('combined'));
 
 // Khai bao router
 app.use('/', indexRouter);
