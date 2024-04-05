@@ -13,10 +13,11 @@ const getHomepage = (req, res) => {
             return;
         }
         user = results;
-        console.log(">>> results homepage: ", results);
+        res.render('index.ejs');
+        //console.log(">>> results homepage: ", results);
         });
     });
-    res.render('index.ejs');
+    
 }
 const getContact = (req, res) => {
     res.render('contact.ejs');
@@ -26,8 +27,22 @@ const getAbout = (req, res) => {
 }
 
 const postCreateUser = (req,res) =>{
-    console.log(">>> req.body", req.body) // check data
-    res.send('Create a new user');
+    
+    let first_name = req.body.fname;
+    let last_name = req.body.lname;
+    let email = req.body.email;
+
+    console.log(">>> first_name= ", first_name, ">>> last_name= ",last_name, ">>> email= ",email ) // check data
+    // let {id, first_name, last_name, email} = req.body
+    connection.query(
+    `INSERT INTO 
+    employees (first_name, last_name, email) 
+    VALUES(?, ?, ?)`,
+    [first_name, last_name, email],
+    function(err, results){
+        console.log(results);
+        res.send('Created user succeed !');
+    });
 }
 
 module.exports = {getHomepage, getContact, getAbout, postCreateUser};
