@@ -2,6 +2,9 @@ const connection = require('../config/database');
 
 
 const getHomepage = (req, res) => {
+    res.render('index.ejs');    
+}
+const getCreate = (req, res) => {
     let user = [];
     connection.connect(function(err) {
 
@@ -13,14 +16,10 @@ const getHomepage = (req, res) => {
             return;
         }
         user = results;
-        res.render('index.ejs');
-        //console.log(">>> results homepage: ", results);
+        res.render('create.ejs');
         });
     });
     
-}
-const getContact = (req, res) => {
-    res.render('contact.ejs');
 }
 const getAbout = (req, res) => {
     res.send('trunghieutran');
@@ -45,4 +44,5 @@ const postCreateUser = (req,res) =>{
     });
 }
 
-module.exports = {getHomepage, getContact, getAbout, postCreateUser};
+
+module.exports = {getHomepage, getCreate, getAbout, postCreateUser};
