@@ -1,8 +1,10 @@
 const connection = require('../config/database');
+const {getAllEmployees} = require('../services/CRUDService')
 
-
-const getHomepage = (req, res) => {
-    res.render('index.ejs');    
+const getHomepage = async (req, res) => {
+    console.log(">>> check rows: ");
+    let result = await getAllEmployees();
+    res.render('index.ejs', {listEmployees: result});
 }
 const getCreate = (req, res) => {
     let user = [];

@@ -15,6 +15,7 @@
         <a href="/setting">Setting</a>
     </div>
     <div class="table-container">
+      <%= JSON.stringify(listEmployees) %>
       <h1 class="title">Employees Table</h1>
       <table id="employees">
         <tr>
@@ -73,6 +74,10 @@
           <td>France</td>
         </tr>
       </table>
+      <div>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
     </div>
 </body>
 
