@@ -10,6 +10,21 @@ const getEmployeeById = async (employeeID) => {
 
     return employee;
 }
+
+const updateEmployeeById = async(first_name, last_name, email, employeeId) =>{
+    let [results, fields] = await connection.promise().query(
+        `
+        UPDATE employees
+        SET first_name = ?, last_name = ?, email = ?
+        WHERE employee_id = ?
+        `,[first_name, last_name, email, employeeId]
+        );
+}
+const createEmployee = async(first_name, last_name, email,) =>{
+    let [results, fields] = await connection.promise().query(
+    `INSERT INTO employees (first_name, last_name, email) VALUES(?, ?, ?)`,[first_name, last_name, email]
+    );
+}
 module.exports = {
-    getAllEmployees, getEmployeeById
+    getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee
 }

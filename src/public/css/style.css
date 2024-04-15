@@ -127,3 +127,6 @@ fieldset {
     background-color: #2a8fdd;
     color: white;
   }
+  .d-non {
+    display: none;
+  }

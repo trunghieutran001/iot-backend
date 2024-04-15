@@ -1,8 +1,7 @@
 const connection = require('../config/database');
-const {getAllEmployees, getEmployeeById} = require('../services/CRUDService')
+const {getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee} = require('../services/CRUDService')
 
 const getHomepage = async (req, res) => {
-    console.log(">>> check rows: ");
     let result = await getAllEmployees();
     res.render('index.ejs', {listEmployees: result});
 }
@@ -34,17 +33,18 @@ const postCreate = async (req,res) =>{
     let first_name = req.body.fname;
     let last_name = req.body.lname;
     let email = req.body.email;
-// let {id, first_name, last_name, email} = req.body
-
-
-    console.log(">>> first_name= ", first_name, ">>> last_name= ",last_name, ">>> email= ",email ) // check data   
-    let [results, fields] = await connection.promise().query(
-        `INSERT INTO employees (first_name, last_name, email) VALUES(?, ?, ?)`,[first_name, last_name, email]
-        );
-
-        console.log('>>> Check result: ', results);
-        res.send('Created employees succeed!');
+    await createEmployee(first_name, last_name, email);
+    res.redirect('/');
+    console.log('Created employees succeed!');
+}
+const postUpdate = async (req,res) =>{
+    let employeeId = req.body.employeeId;
+    let first_name = req.body.fname;
+    let last_name = req.body.lname;
+    let email = req.body.email;
+    await updateEmployeeById(first_name, last_name, email, employeeId);
+    res.redirect('/');
+    console.log('Updated employees succeed!');
 }
 
-
-module.exports = {getHomepage, getCreate, getUpdate, postCreate,getEmployeeById};
+module.exports = {getHomepage, getCreate, getUpdate, postCreate, createEmployee, getEmployeeById, postUpdate, updateEmployeeById};

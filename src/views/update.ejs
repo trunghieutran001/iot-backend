@@ -16,18 +16,31 @@
     </div>
     <div><h1></h1></div>
     <div class="form-add-new">
-    <form action="/create-user" method="post">
+    <form action="/update-user" method="post">
         <!-- <%= JSON.stringify(employeeEdit)%> -->
         <fieldset>
             <legend>Update Employees</legend>
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname" value="<%=employeeEdit.first_name %>"><br><br>
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname" value="<%=employeeEdit.last_name %>"><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<%=employeeEdit.email %>"><br><br>
-          </fieldset>
-          <div>
+            <div class="input-group d-non">
+                <label for="id">ID:</label>
+                <input type="text" id="employee_id" name="employeeId" value="<%=employeeEdit.employee_id %>"><br><br>
+            </div class="input-group">
+
+            <div class="input-group">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" value="<%=employeeEdit.first_name %>"><br><br>
+            </div>
+
+            <div class="input-group">            
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname" value="<%=employeeEdit.last_name %>"><br><br>
+            </div>
+
+            <div class="input-group">            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<%=employeeEdit.email %>"><br><br>
+            </div>
+        </fieldset>
+        <div>
             <button>save</button>
         </div>
     </form>
