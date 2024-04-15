@@ -11,7 +11,6 @@
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/create">Create Employees</a>
-        <a href="/update">Edit Employees</a>
         <a href="/setting">Setting</a>
     </div>
     <div class="table-container">
@@ -37,7 +36,9 @@
             </td>
             <td>
               <a href="/update/<%= employee.employee_id %>">Edit</a>
-              <button>Delete</button>
+              <form action="/delete-user/<%= employee.employee_id %>" method="post">
+                <button>Delete</button>
+              </form>
             </td>
           </tr>
         <% }); %>

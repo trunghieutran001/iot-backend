@@ -10,6 +10,11 @@ const getEmployeeById = async (employeeID) => {
 
     return employee;
 }
+const createEmployee = async(first_name, last_name, email,) =>{
+    let [results, fields] = await connection.promise().query(
+    `INSERT INTO employees (first_name, last_name, email) VALUES(?, ?, ?)`,[first_name, last_name, email]
+    );
+}
 
 const updateEmployeeById = async(first_name, last_name, email, employeeId) =>{
     let [results, fields] = await connection.promise().query(
@@ -20,11 +25,14 @@ const updateEmployeeById = async(first_name, last_name, email, employeeId) =>{
         `,[first_name, last_name, email, employeeId]
         );
 }
-const createEmployee = async(first_name, last_name, email,) =>{
+
+const deleteEmpoyee = async(employeeId) =>{
     let [results, fields] = await connection.promise().query(
-    `INSERT INTO employees (first_name, last_name, email) VALUES(?, ?, ?)`,[first_name, last_name, email]
-    );
+        `
+        DELETE FROM employees WHERE employee_id = ?;
+        `,[employeeId]
+        );
 }
 module.exports = {
-    getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee
+    getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee, deleteEmpoyee
 }

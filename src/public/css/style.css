@@ -130,3 +130,6 @@ fieldset {
   .d-non {
     display: none;
   }
+a,form {
+    display: inline;
+}
