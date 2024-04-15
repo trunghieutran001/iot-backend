@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const {getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee, } = require('../services/CRUDService')
+const {getAllEmployees, getEmployeeById, updateEmployeeById, createEmployee, deleteEmpoyee } = require('../services/CRUDService')
 
 const getHomepage = async (req, res) => {
     let result = await getAllEmployees();
@@ -53,7 +53,10 @@ const postDelete = async (req,res) =>{
     res.render('delete.ejs', {employeeEdit:employee});
 }
 
-const postHandleRemove = (req, res) =>{
-    res.send(' ok delete');
+const postHandleRemove = async (req, res) =>{
+    let employeeId = req.body.employeeId;
+    await deleteEmpoyee (employeeId );
+    res.redirect('/');
+    console.log('Delete employees succeed!');
 }
 module.exports = {getHomepage, getCreate, getUpdate, postCreate, createEmployee, getEmployeeById, postUpdate, updateEmployeeById, postDelete, postHandleRemove};
