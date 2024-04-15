@@ -10,8 +10,8 @@
 <body>
     <div class="topnav">
         <a class="active" href="/">Home</a>
-        <a href="/create">Create User</a>
-        <a href="/about">About</a>
+        <a href="/create">Create Employees</a>
+        <a href="/update">Edit Employees</a>
         <a href="/setting">Setting</a>
     </div>
     <div class="table-container">
@@ -22,6 +22,7 @@
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
+          <th></th>
         </tr>
         <!-- <% for (let i = 0; i < listEmployees.length; i++) { %>
           <tr>
@@ -46,6 +47,10 @@
             </td>
             <td>
               <%= employee.email %>
+            </td>
+            <td>
+              <a href="/update">Edit</a>
+              <button>Delete</button>
             </td>
           </tr>
         <% }); %>

@@ -24,11 +24,13 @@ const getCreate = (req, res) => {
     });
     
 }
-const getAbout = (req, res) => {
-    res.send('trunghieutran');
+const getUpdate = async (req, res) => {
+    console.log(">>> check rows: ");
+    let result = await getAllEmployees();
+    res.render('update.ejs', {listEmployees: result});
 }
 
-const postCreateUser = async (req,res) =>{
+const postCreate = async (req,res) =>{
     
     let first_name = req.body.fname;
     let last_name = req.body.lname;
@@ -46,4 +48,4 @@ const postCreateUser = async (req,res) =>{
 }
 
 
-module.exports = {getHomepage, getCreate, getAbout, postCreateUser};
+module.exports = {getHomepage, getCreate, getUpdate, postCreate};
