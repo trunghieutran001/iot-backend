@@ -9,7 +9,7 @@ router.get('/', getHomepage);
 router.get('/create', getCreate);
 
 // add router about
-router.get('/update', getUpdate);
+router.get('/update/:id', getUpdate);
 
 router.post('/create-user', postCreate);
 module.exports = router; //exprot defaults

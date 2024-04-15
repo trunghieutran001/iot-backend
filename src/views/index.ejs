@@ -49,16 +49,12 @@
               <%= employee.email %>
             </td>
             <td>
-              <a href="/update">Edit</a>
+              <a href="/update/<%= employee.employee_id %>">Edit</a>
               <button>Delete</button>
             </td>
           </tr>
         <% }); %>
       </table>
-      <div>
-        <button>Edit</button>
-        <button>Delete</button>
-      </div>
     </div>
 </body>
 
