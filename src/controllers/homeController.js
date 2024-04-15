@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const {getAllEmployees} = require('../services/CRUDService')
+const {getAllEmployees, getEmployeeById} = require('../services/CRUDService')
 
 const getHomepage = async (req, res) => {
     console.log(">>> check rows: ");
@@ -26,8 +26,8 @@ const getCreate = (req, res) => {
 }
 const getUpdate = async (req, res) => {
     const employeeID = req.params.id;
-    console.log(">>> req.params: ",req.params, employeeID);
-    res.render('update.ejs');
+    let employee = await getEmployeeById(employeeID);
+    res.render('update.ejs', {employeeEdit:employee});
 }
 
 const postCreate = async (req,res) =>{
@@ -47,4 +47,4 @@ const postCreate = async (req,res) =>{
 }
 
 
-module.exports = {getHomepage, getCreate, getUpdate, postCreate};
+module.exports = {getHomepage, getCreate, getUpdate, postCreate,getEmployeeById};
